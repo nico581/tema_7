@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>00_skelet</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <script>
+        //Variable
+        let længde = 10;
+        let bredde = 12;
+        let areal = længde * bredde;
+        let resultat;
+
+
+        // Hvis arealet er under 100, skal der stå: Arealet er for lille. Hvis arealet er mellem 100 og 200, skal der stå: Arelet er ok. Er arealet større end/eller lig med 200, skal der stå: Arealet er for stort
+
+        //If statements
+        if (areal < 100) {
+            resultat = "Arealet er for lille";
+        } else if (areal < 200) {
+            resultat = "Arealet er ok"
+        } else {
+            resultat = "Arealet er for stort"
+        }
+
+        //Konsol
+        console.log(resultat);
+    </script>
+</body></html>
