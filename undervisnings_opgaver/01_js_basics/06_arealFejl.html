@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_goddag</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <p>Hvad er længden?</p>
+    <input type="text" id="længde">
+    <p>Hvad er bredden?</p>
+    <input type="text" id="bredde">
+    <button>Klik & kig i konsollen</button>
+
+
+    <script>
+        //Test hvad der sker, hvis brugeren angiver tekst i stedet for tal som længde og bredde. Prøv at ændre på programmet, så det tager højde for fejldata og giver brugeren en fejlmedling
+
+        //Klik på knappen
+        document.querySelector("button").addEventListener("click", buttonClicked);
+
+        //Funktion ved klik
+        function buttonClicked() {
+            let længde = document.querySelector("#længde").value;
+
+            let bredde = document.querySelector("#bredde").value;
+
+            let a = areal(længde, bredde);
+
+            let resultat;
+            if (isNaN(a)) {
+                resultat = "Det er ikke et tal, prøv igen"
+            } else if (a <= 0) {
+                resultat = "Arealet er lig med 0 eller mindre end 0"
+            } else {
+                resultat = `Arealet er ${a}`;
+            }
+
+            //Konsollen
+            console.log(resultat);
+
+        }
+
+        //Udregner arealet
+        function areal(l, b) {
+            return l * b;
+        }
+    </script>
+</body></html>
