@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_goddag</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <input type="text" id="navn">
+    <button>Klik & kig i konsollen</button>
+    <script>
+        // Skriv et program, som spørger brugeren om hans/hendes navn inputFelt, og ved et tryk på knap herefter svarer med "Goddag navn" console.log.
+
+        // Ved klik på knappen
+        document.querySelector("button").addEventListener("click", buttonClicked);
+
+        //Funktion ved klik
+        function buttonClicked() {
+            let brugerNavn = document.querySelector("#navn").value;
+            console.log(`Goddag ${brugerNavn}`);
+        }
+
+        //
+    </script>
+</body></html>
