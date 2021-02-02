@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_sigGodmorgen</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <script>
+        //Skriv et program, som i konsollen siger: Godmorgen mellem kl. 5 & kl. 10. Goddag mellem kl. 10 - 18. Godaften mellem kl. 18 & 24. Godnat mellem 24 og kl. 5
+
+        const time = new Date().getHours();
+        console.log("Time", time);
+
+        if (time < 5) {
+            console.log("Godnat");
+        } else if (time < 10) {
+            console.log("Godmorgen");
+        } else if (time < 18) {
+            console.log("Goddag");
+        } else {
+            console.log("Godaften");
+        }
+
+    </script>
+</body>
+
+</html>
