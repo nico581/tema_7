@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_sigGodmorgen</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <p>Gæt mit tal mellem 0 & 20</p>
+    <input type="text" id="gæt">
+    <button>Guess</button>
+    <button id="nyt_spil">Prøv igen</button>
+    <script>
+        //Programmet skal tælle et tal
+
+        const tilfaeldigtTal = Math.round(Math.random() * 20);
+        let antalGæt = 0;
+        document.querySelector("button").addEventListener("click", guessTal);
+
+        function guessTal() {
+            antalGæt++;
+            const guess = document.querySelector("#gæt").value;
+            console.log("tilfaeldigtTal", tilfaeldigtTal);
+            console.log("brugergæt", guess);
+            if (guess == tilfaeldigtTal) {
+                console.log("Rigtigt!");
+            } else if (guess > tilfaeldigtTal) {
+                console.log("For lavet");
+            } else {
+                console.log("For højt");
+            }
+        }
+    </script>
+</body></html>
