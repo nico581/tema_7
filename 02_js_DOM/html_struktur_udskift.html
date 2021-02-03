@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Øvelse 1 - JS & DOM</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: auto 0;
+            font-family: sans-serif;
+        }
+
+        section {
+            margin: auto 2rem;
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+            color: red;
+        }
+
+        header {
+            border: solid 1.5px black;
+            margin-bottom:
+        }
+
+        article {
+            border: solid 1px black;
+            padding: 1rem;
+        }
+
+        img {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        footer {
+            text-align: center;
+            margin: 1rem 1rem;
+            padding: 1rem;
+            border: solid 1px grey;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+        <h2>Underoverskrift</h2>
+        <section>
+            <article>
+                <img src="https://placeimg.com/640/480/any">
+                <h3>Artikel</h3>
+                <p>Dette er tekst 1</p>
+            </article>
+            <article>
+                <img src="https://placeimg.com/640/480/any">
+                <h3>Artikel</h3>
+                <p>Dette er tekst 2</p>
+            </article>
+        </section>
+    </main>
+    <footer>Footer</footer>
+    <script>
+        //Overskrift
+        const titel = document.querySelector("h1");
+        titel.textContent;
+        titel.textContent = "Billeder";
+        console.log(titel.textContent);
+
+        //Underoverskrift
+        const undertitel = document.querySelector("h2");
+        undertitel.textContent;
+        console.log(undertitel.textContent);
+        undertitel.innerHTML = "Her er et <u>billedegalleri</u>"
+        console.log(undertitel.innerHTML);
+
+        //Article overskrift 1
+        const article1 = document.querySelector("article:nth-child(1) h3");
+        article1.textContent;
+        console.log(article1.textContent);
+        article1.textContent = "Billede 1";
+        console.log(article1.textContent);
+
+
+        //Tekst 1
+        const tekst1 = document.querySelector("article:nth-child(1) p");
+        tekst1.textContent;
+        console.log(tekst1.textContent);
+        tekst1.innerHTML = "Her er en <b>billedetekst</b>";
+        console.log(tekst1.innerHTML);
+
+        //Article overskrift 2
+        const article2 = document.querySelector("article:nth-child(2) h3");
+        article2.textContent;
+        console.log(article2.textContent);
+        article2.innerHTML = "Billede <u>2</u>";
+        console.log(article2.innerHTML);
+
+
+        //Tekst 2
+        const tekst2 = document.querySelector("article:nth-child(2) p");
+        tekst2.textContent;
+        console.log(tekst2.textContent);
+        tekst2.textContent = "Her er en anden billedetekst";
+        console.log(tekst2.textContent);
+    </script>
+</body></html>
