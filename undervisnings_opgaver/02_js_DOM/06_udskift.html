@@ -162,6 +162,13 @@
             let textText = document.createTextNode("Her er en tekst til artikel tre");
             text.appendChild(textText);
             newArticle.appendChild(text);
+
+            pic1.addEventListener("click", skiftBillede);
+        }
+
+        function skiftBillede() {
+            let tal = Math.round(Math.random() * 10);
+            pic1.src = "https://placeimg.com/400/300/arch?t=" + tal;
         }
     </script>
 </body></html>
