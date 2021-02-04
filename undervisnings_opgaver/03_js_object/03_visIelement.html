@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 Vis i element</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <article>
+        <h3></h3>
+        <img>
+        <p></p>
+        <p></p>
+    </article>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log(`Dom er loadet`);
+        }
+        //Gris
+        const gris = {
+            "navn": "Gris",
+            "type": "Pattedyr",
+            "billede": "http://mabe-kea.dk/E19/pics/pig.png",
+            "levested": "Svinefarme"
+        }
+        console.log(gris);
+        console.log(`Navn:${gris.navn} Type:${gris.type}, Billede:${gris.billede}, Levested:${gris.levested}`);
+        //Destination
+        const destination = document.querySelector("article");
+
+        destination.querySelector("h3").textContent = `${gris.navn}`;
+        destination.querySelector("p:nth-child(1) ").textContent = `${gris.type}`;
+        destination.querySelector("p:nth-child(2) ").textContent = `${gris.levested}`;
+        destination.querySelector("img").src = `Billede:${gris.billede}`;
+    </script>
+</body></html>
