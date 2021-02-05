@@ -10,6 +10,8 @@
 
 <body>
     <article>
+        <h3></h3>
+        <p></p>
         <p></p>
         <img>
     </article>
@@ -19,19 +21,19 @@
         function start() {
             console.log(`Dom er loadet`);
         }
-        //Gris
-        const gris = {
+        let dyr = {
             "navn": "Gris",
             "type": "Pattedyr",
-            "billede": "http://mabe-kea.dk/E19/pics/pig.png",
-            "levested": "Svinefarme"
+            "levested": "svinesti",
+            "billede": "http://mabe-kea.dk/E19/pics/pig.png"
         }
-        console.log(gris);
-        console.log(`Navn:${gris.navn} Type:${gris.type}, Billede:${gris.billede}, Levested:${gris.levested}`);
-        //Destination
-        const destination = document.querySelector("article");
+        let artikel = document.querySelector("article");
 
-        destination.querySelector("p").textContent = `Navn:${gris.navn} Type:${gris.type}, Levested:${gris.levested}`;
-        destination.querySelector("img").src = `Billede:${gris.billede}`;
+        console.log(dyr);
+
+        artikel.querySelector("img").src = dyr.billede;
+        artikel.querySelector("h3").textContent = dyr.navn;
+        artikel.querySelector("p").textContent = "Type: " + dyr.type;
+        artikel.querySelector("p + p").textContent = "Lever i: " + dyr.levested;
     </script>
 </body></html>
