@@ -26,9 +26,15 @@
         }
 
         article {
-            border: 1px solid orange;
+            border: 1px solid #1d2b5e;
             border-radius: 5px;
             padding: 10px;
+            font-family: sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            color: #e2cfd8;
         }
 
     </style>
@@ -74,7 +80,7 @@
             json.forEach(person => {
                 const klon = template.cloneNode(true);
                 klon.querySelector(".billede").src = medieurl + person.billede;
-                klon.querySelector(".navn").textContent = person.navn;
+                klon.querySelector(".navn").textContent = person.fornavn;
                 klon.querySelector(".titel").textContent = person.titel;
                 klon.querySelector(".hobby").textContent = person.hobby;
                 main.appendChild(klon);
