@@ -21,7 +21,7 @@
         function start() {
             console.log(`Dom er loadet`);
         }
-        let dyr = {
+        let gris = {
             "navn": "Gris",
             "type": "Pattedyr",
             "levested": "svinesti",
@@ -29,11 +29,7 @@
         }
         let artikel = document.querySelector("article");
 
-        console.log(dyr);
-
-        artikel.querySelector("img").src = dyr.billede;
-        artikel.querySelector("h3").textContent = dyr.navn;
-        artikel.querySelector("p").textContent = "Type: " + dyr.type;
-        artikel.querySelector("p + p").textContent = "Lever i: " + dyr.levested;
+        console.log(gris);
+        elm.innerHTML = `<img src=${gris.billede}><p>Navn: ${gris.navn} Type: ${gris.type} Levested: ${gris.levested} </p>`;
     </script>
 </body></html>
