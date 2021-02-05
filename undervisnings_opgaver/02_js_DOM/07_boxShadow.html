@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Øvelse 1 - JS & DOM</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: auto 0;
+            font-family: sans-serif;
+        }
+
+        section {
+            margin: auto 2rem;
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+            color: red;
+        }
+
+        header {
+            border: solid 1.5px black;
+            margin-bottom:
+        }
+
+        article {
+            border: solid 1px black;
+            padding: 1rem;
+        }
+
+        img {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        footer {
+            text-align: center;
+            margin: 1rem 1rem;
+            padding: 1rem;
+            border: solid 1px grey;
+        }
+
+        .skygge {
+            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+        <h2>Underoverskrift</h2>
+        <section>
+            <article>
+                <img src="https://placeimg.com/640/480/any">
+                <h3>Artikel</h3>
+                <p>Dette er tekst 1</p>
+            </article>
+            <article>
+                <img src="https://placeimg.com/640/480/any">
+                <h3>Artikel</h3>
+                <p>Dette er tekst 2</p>
+            </article>
+        </section>
+    </main>
+    <footer>Footer</footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        console.log("DOM er loaded & indhold indlæses");
+
+        function start() { //Overskrift
+            const titel = document.querySelector("h1");
+            titel.textContent;
+            titel.textContent = "Billeder";
+            console.log(titel.textContent);
+
+            //Underoverskrift
+            const undertitel = document.querySelector("h2");
+            undertitel.textContent;
+            console.log(undertitel.textContent);
+            undertitel.innerHTML = "Her er et <u>billedegalleri</u>"
+            console.log(undertitel.innerHTML);
+
+            //Article overskrift 1
+            const article1 = document.querySelector("article:nth-child(1) h3");
+            article1.textContent;
+            console.log(article1.textContent);
+            article1.textContent = "Billede 1";
+            console.log(article1.textContent);
+
+
+            //Tekst 1
+            const tekst1 = document.querySelector("article:nth-child(1) p");
+            tekst1.textContent;
+            console.log(tekst1.textContent);
+            tekst1.innerHTML = "Her er en <b>billedetekst</b>";
+            console.log(tekst1.innerHTML);
+
+            //Billede 1
+            const pic1 = document.querySelector("article:nth-child(1) img");
+            console.log(pic1);
+            pic1.src = "img/pic1.png";
+            pic1.alt = "Billede af stuen";
+
+            //Article overskrift 2
+            const article2 = document.querySelector("article:nth-child(2) h3");
+            article2.textContent;
+            console.log(article2.textContent);
+            article2.innerHTML = "Billede <u>2</u>";
+            console.log(article2.innerHTML);
+
+
+            //Tekst 2
+            const tekst2 = document.querySelector("article:nth-child(2) p");
+            tekst2.textContent;
+            console.log(tekst2.textContent);
+            tekst2.textContent = "Her er en anden billedetekst";
+            console.log(tekst2.textContent);
+
+            //Billede 2
+            const pic2 = document.querySelector("article:nth-child(2) img");
+            console.log(pic2);
+            pic2.src = "img/pic2.png";
+            pic2.alt = "Billede af blomster";
+
+            //Ny article tag tilføjet i section
+            let newArticle = document.createElement("article");
+            let mainSection = document.querySelector("section");
+
+            //Overskrift tilføjet til nyt article element
+            let overskrift = document.createElement("h3");
+            let overskriftText = document.createTextNode("Article 3");
+
+            //Tekst til overskrift
+            overskrift.appendChild(overskriftText);
+            newArticle.appendChild(overskrift);
+
+            //Ny article tag tilføjet i section
+            mainSection.appendChild(newArticle);
+
+            //Billede
+            let pic3 = document.createElement("img");
+            pic3.src = "img/pic1.png";
+            pic3.alt = "Billede af stue";
+
+            newArticle.appendChild(pic3);
+
+            //Tekst
+            let text = document.createElement("p");
+            let textText = document.createTextNode("Her er en tekst til artikel tre");
+            text.appendChild(textText);
+            newArticle.appendChild(text);
+
+        }
+
+        document.querySelector("article").addEventListener("mouseover", shadow);
+        document.querySelector("article").addEventListener("mouseout", shadow);
+
+        document.querySelector("article:nth-child(2)").addEventListener("mouseover", shadow);
+        document.querySelector("article:nth-child(2)").addEventListener("mouseout", shadow);
+
+        document.querySelector("article:nth-child(3)").addEventListener("mouseover", shadow);
+        document.querySelector("article:nth-child(3)").addEventListener("mouseout", shadow);
+
+        function shadow() {
+            document.querySelector("article").classList.toggle("skygge");
+        }
+    </script>
+</body></html>
