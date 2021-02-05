@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Objekter</title>
+</head>
+
+<body>
+    <article>
+
+    </article>
+    <script>
+        //Array
+        let dyr = [{
+            "navn": "Gris",
+            "type": "Pattedyr",
+            "levested": "svinesti"
+        }, {
+            "navn": "Ko",
+            "type": "Pattedyr",
+            "levested": "stald"
+        }, {
+            "navn": "Hugorm",
+            "type": "krybdyr",
+            "levested": "skoven"
+        }]
+
+        let artikel = document.querySelector("article");
+
+        //løb igennem array "dyr"
+        dyr.forEach(etDyr => {
+            console.log(etDyr.navn);
+            artikel.innerHTML += `<p>Navn: ${etDyr.navn} Type: ${etDyr.type} </p>`;
+        })
+
+    </script>
+</body>
