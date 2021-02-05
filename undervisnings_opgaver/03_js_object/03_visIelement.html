@@ -21,21 +21,19 @@
         function start() {
             console.log(`Dom er loadet`);
         }
-        //Gris
-        const gris = {
+        let gris = {
             "navn": "Gris",
             "type": "Pattedyr",
-            "billede": "http://mabe-kea.dk/E19/pics/pig.png",
-            "levested": "Svinefarme"
+            "levested": "svinesti",
+            "billede": "http://mabe-kea.dk/E19/pics/pig.png"
         }
-        console.log(gris);
-        console.log(`Navn:${gris.navn} Type:${gris.type}, Billede:${gris.billede}, Levested:${gris.levested}`);
-        //Destination
-        const destination = document.querySelector("article");
+        let artikel = document.querySelector("article");
 
-        destination.querySelector("h3").textContent = `${gris.navn}`;
-        destination.querySelector("p:nth-child(1) ").textContent = `${gris.type}`;
-        destination.querySelector("p:nth-child(2) ").textContent = `${gris.levested}`;
-        destination.querySelector("img").src = `Billede:${gris.billede}`;
+        console.log(gris);
+
+        artikel.querySelector("img").src = gris.billede;
+        artikel.querySelector("h3").textContent = gris.navn;
+        artikel.querySelector("p").textContent = "Type: " + gris.type;
+        artikel.querySelector("p + p").textContent = "Lever i: " + gris.levested;
     </script>
 </body></html>
