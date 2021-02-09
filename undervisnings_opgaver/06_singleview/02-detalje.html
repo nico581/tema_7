@@ -10,13 +10,20 @@
             font-family: sans-serif;
         }
 
+        section {
+            max-width: 800px;
+            margin: auto;
+
+        }
+
         img {
             width: 100%;
         }
 
-        h1 {
+        h2 {
             text-align: center;
-            font-size: 4rem;
+            font-size: 1rem;
+            text-align: center;
         }
 
         #liste {
@@ -35,6 +42,18 @@
         button {
             padding: 1rem;
             border: none;
+            margin-top: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            text-decoration: underline;
+        }
+
+        .button_container {
+            display: flex;
+            justify-content: center;
         }
 
         nav {
@@ -52,14 +71,14 @@
 <body>
     <header>
     </header>
-    <section id="liste"></section>
-
-    <article class="person">
-        <h2 class="navn"></h2>
-        <p class="køn"></p>
-        <img src="" alt="" class="profil-billede">
-        <div class="button_container"><button>LUK</button></div>
-    </article>
+    <section>
+        <article class="person">
+            <h2 class="navn"></h2>
+            <p class="køn"></p>
+            <img src="" alt="" class="profil-billede">
+            <div class="button_container"><button>Tilbage til Galleri</button></div>
+        </article>
+    </section>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
