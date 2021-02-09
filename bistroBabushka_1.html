@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistro Babushka</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: auto 0;
+
+        }
+
+        img {
+            width: 100%;
+        }
+
+        #oversigt {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 1em;
+            margin: 2em;
+        }
+
+        .menu {
+            text-align: center;
+            background-color: whitesmoke;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .menu h2 {
+            font-family: buena-park-jf, serif;
+            font-style: normal;
+            font-weight: 100;
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            font-family: buena-park-jf, serif;
+            font-style: normal;
+            font-weight: 100;
+        }
+
+        .navigation a {
+            display: inline;
+            float: right;
+            margin-right: 2rem;
+            padding: 2.5rem;
+            text-decoration: none;
+            color: black;
+            font-family: buena-park-jf, serif;
+            font-style: normal;
+            font-weight: 100;
+        }
+
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+
+        header img {
+            margin-top: 1rem;
+            margin-left: 1rem;
+            width: 40vw;
+            height: 15vw;
+        }
+
+        .menukort {
+            text-align: center;
+        }
+
+        .menukort button {
+            padding: 1rem;
+            margin: 0.5rem;
+            font-family: buena-park-jf, serif;
+            font-style: normal;
+            font-weight: 400;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .menukort button:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .valgt {
+            background-color: #B6533E;
+        }
+
+
+        .detaljer {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            background-color: #B6533E;
+            color: white;
+        }
+
+        .detaljer:hover {
+            cursor: pointer;
+            background-color: black;
+        }
+    </style>
+    <link rel="stylesheet" href="https://use.typekit.net/ucm5hob.css">
+</head>
+
+<body>
+    <nav class="navigation">
+        <a href="#index.html">Menukort</a>
+    </nav>
+    <header>
+        <img src="babushka.png" alt="Logo">
+    </header>
+    <h1>Foretter</h1>
+    <nav class="menukort">
+        <button data-kategori="alle" class="valgt">Alle retter</button>
+        <button data-kategori="forretter">Foretter</button>
+        <button data-kategori="hovedretter">Hovedretter</button>
+        <button data-kategori="desserter">Desserter</button>
+        <button data-kategori="sideorders">Sideorders</button>
+        <button data-kategori="drikkevarer">Drikkevarer</button>
+    </nav>
+    <section id="oversigt"></section>
+    <template>
+        <article class="menu">
+            <h2 class="titel"></h2>
+            <img src="" alt="" class="billede">
+            <p class="lidt_info"></p>
+            <p class="pris"></p>
+            <button class="detaljer">Detaljer</button>
+        </article>
+    </template>
+
+
+    <script>
+        //Variabler
+        const titel = document.querySelector("h1");
+        const medieurl = "https://babushka-dd8a.restdb.io/media/";
+        const myHeaders = {
+            "x-apikey": "600ec2fb1346a1524ff12de4"
+        }
+
+        // DOM loaded
+        document.addEventListener("DOMContentLoaded", start)
+        let menu;
+        let filter = "alle";
+
+        //Funktion start
+        function start() {
+            const filterKnapper = document.querySelectorAll(".menukort button");
+
+            filterKnapper.forEach(knap => knap.addEventListener("click", filtrerMenu));
+            loadJSON();
+        }
+
+        //Funktion filtrer menukort
+        function filtrerMenu() {
+            filter = this.dataset.kategori;
+            // Sæt variabel "filter" til værdien data-kategori på den knap der er klikket på
+            document.querySelector(".valgt").classList.remove("valgt");
+            // Fjerner klassen
+
+            this.classList.add("valgt");
+            // Tilføjer klassen på valgt knap
+
+            titel.textContent = this.textContent;
+            // Ændrer titel til den valgte kategori's titel
+
+            visMenu();
+            //Kalder funktion visRet efter det nye filter er sat
+        }
+
+        async function loadJSON() {
+            const JSONData = await fetch("https://babushka-dd8a.restdb.io/rest/menu", {
+                headers: myHeaders
+            });
+
+            menu = await JSONData.json();
+            console.log("Menu", menu);
+            visMenu();
+        }
+
+        //Funktion der viser menu
+        function visMenu() {
+            const dest = document.querySelector("#oversigt");
+            // Container (section) til menuen
+            const skabelon = document.querySelector("template").content;
+            //Select indhold af html skabelon (article)
+            dest.textContent = "";
+            //Rydder op i container inden nyt loop
+            menu.forEach(menu => {
+                console.log("Kategori", menu.kategori);
+                //loop igennem json (menu)
+                if (filter == menu.kategori || filter == "alle") {
+                    const klon = skabelon.cloneNode(true);
+                    klon.querySelector(".titel").textContent = menu.navn;
+                    klon.querySelector(".billede").src = medieurl + menu.billede;
+                    klon.querySelector(".billede").alt = menu.kortbeskrivelse;
+                    klon.querySelector(".pris").textContent = menu.pris + " " + "kr.";
+                    klon.querySelector(".lidt_info").textContent = menu.kortbeskrivelse;
+                    dest.appendChild(klon);
+
+                }
+            })
+        }
+    </script>
+</body></html>
+

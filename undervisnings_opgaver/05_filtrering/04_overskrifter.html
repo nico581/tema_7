@@ -41,15 +41,20 @@
         }
     </style>
 
+    </style>
+
 </head>
 
 <body>
-    <nav>
-        <button data-troende="alle" class="valgt">Alle</button>
-        <button data-troende="ja">Troende</button>
-        <button data-troende="nej">Ikke Troende</button>
-        <button data-troende="tvivler">Tvivler</button>
-    </nav>
+    <header>
+        <h1>Alle</h1>
+        <nav>
+            <button data-troende="alle">Alle</button>
+            <button data-troende="ja" class="valgt">Troende</button>
+            <button data-troende="nej">Ikke troende</button>
+            <button data-troende="tvivler">Tvivler</button>
+        </nav>
+    </header>
     <section id="liste"></section>
 
     <template>
@@ -70,12 +75,25 @@
         }
         document.addEventListener("DOMContentLoaded", start)
         let personer;
-        let filter = "ja";
-
+        let filter = "alle";
         // første funktion der kaldes efter DOM er loaded
         function start() {
+
+            const filterKnapper = document.querySelectorAll("nav button");
+            filterKnapper.forEach(knap => knap.addEventListener("click", filtrerPersoner));
             loadJSON();
         }
+
+        function filtrerPersoner() {
+            filter = this.dataset.troende; // sæt variabel "filter" til værdien af data-troende på den knap der er klikket på
+
+            header.textContent = this.textContent;
+            visPersoner(); // kald funktionen visPersoner efter det nye filter er sat
+
+
+        }
+
+
 
         async function loadJSON() {
             const JSONData = await fetch("https://persongalleri-5d3e.restdb.io/rest/persongalleri", {
@@ -85,25 +103,20 @@
             console.log("Personer", personer);
             visPersoner();
         }
-
         //funktion der viser personer i liste view
         function visPersoner() {
 
             const dest = document.querySelector("#liste"); // container til articles med en person
             const skabelon = document.querySelector("template").content; // select indhold af html skabelon (article)
-
+            dest.textContent = ""; // ryd container inden ny loop
             personer.forEach(person => {
                 // loop igennem json (personer)
-                if (filter == person.troende) {
+                if (filter == person.troende || filter == "alle") {
                     const klon = skabelon.cloneNode(true);
                     klon.querySelector(".navn").textContent = person.fornavn + " " + person.efternavn;
                     klon.querySelector(".profil-billede").src = medieurl + person.billede;
-                    klon.querySelector(".profil-billede").alt = person.fornavn + " " + person.efternavn;
                     dest.appendChild(klon);
                 }
-
-
-
             })
         }
     </script>
