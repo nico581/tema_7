@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="da">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,46 +28,45 @@
 
         .menu {
             text-align: center;
-            background-color: whitesmoke;
+            background-color: #F8F4E8;
             padding: 1rem;
             border-radius: 10px;
         }
 
+        .menu img {
+            opacity: 0.8;
+            transition: transform .2s;
+        }
+
+        .menu img:hover {
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
         .menu h2 {
-            font-family: buena-park-jf, serif;
-            font-style: normal;
-            font-weight: 100;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+
         }
 
         h1 {
             font-size: 2rem;
             text-align: center;
-            font-family: buena-park-jf, serif;
-            font-style: normal;
-            font-weight: 100;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
         }
 
-        .navigation a {
-            display: inline;
-            float: right;
-            margin-right: 2rem;
-            padding: 2.5rem;
-            text-decoration: none;
-            color: black;
-            font-family: buena-park-jf, serif;
-            font-style: normal;
-            font-weight: 100;
-        }
-
-        .navigation a:hover {
-            text-decoration: underline;
-        }
 
         header img {
             margin-top: 1rem;
             margin-left: 1rem;
-            width: 40vw;
-            height: 15vw;
+            width: 30vw;
+            height: 30vw;
+        }
+
+        header {
+            text-align: center;
         }
 
         .menukort {
@@ -76,20 +76,20 @@
         .menukort button {
             padding: 1rem;
             margin: 0.5rem;
-            font-family: buena-park-jf, serif;
-            font-style: normal;
-            font-weight: 400;
+            background-color: transparent;
             border: none;
-            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            text-align: center;
         }
 
         .menukort button:hover {
-            text-decoration: underline;
+            color: #D19289;
             cursor: pointer;
         }
 
         .valgt {
-            background-color: #B6533E;
+            text-decoration: underline;
         }
 
 
@@ -97,7 +97,8 @@
             padding: 0.8rem;
             border: none;
             border-radius: 10px;
-            background-color: #B6533E;
+            background-color: #D19289;
+            font-family: 'Montserrat', sans-serif;
             color: white;
         }
 
@@ -105,18 +106,41 @@
             cursor: pointer;
             background-color: black;
         }
+
+        .lidt_info {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8;
+        }
+
+        .pris {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8;
+            color: #E9A692;
+        }
+
+        @media (min-width:800px) {
+            header img {
+                margin-top: 1rem;
+                margin-left: 1rem;
+                width: 20vw;
+                height: 20vw;
+            }
+
+            section {
+                margin: auto 0;
+            }
+        }
     </style>
-    <link rel="stylesheet" href="https://use.typekit.net/ucm5hob.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-    <nav class="navigation">
-        <a href="#index.html">Menukort</a>
-    </nav>
     <header>
-        <img src="babushka.png" alt="Logo">
+        <img src="twobab.png" alt="Logo">
     </header>
-    <h1>Foretter</h1>
+
     <nav class="menukort">
         <button data-kategori="alle" class="valgt">Alle retter</button>
         <button data-kategori="forretter">Foretter</button>
@@ -125,14 +149,14 @@
         <button data-kategori="sideorders">Sideorders</button>
         <button data-kategori="drikkevarer">Drikkevarer</button>
     </nav>
+    <h1>Foretter</h1>
     <section id="oversigt"></section>
     <template>
         <article class="menu">
-            <h2 class="titel"></h2>
             <img src="" alt="" class="billede">
+            <h2 class="titel"></h2>
             <p class="lidt_info"></p>
             <p class="pris"></p>
-            <button class="detaljer">Detaljer</button>
         </article>
     </template>
 
@@ -203,11 +227,15 @@
                     klon.querySelector(".billede").alt = menu.kortbeskrivelse;
                     klon.querySelector(".pris").textContent = menu.pris + " " + "kr.";
                     klon.querySelector(".lidt_info").textContent = menu.kortbeskrivelse;
+                    klon.querySelector(".billede").addEventListener("click", () => visDetaljer(menu));
                     dest.appendChild(klon);
 
                 }
             })
         }
+
+        function visDetaljer(menu) {
+            location.href = `detalje.html?id=${menu._id}`;
+        }
     </script>
 </body></html>
-
