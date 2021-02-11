@@ -19,6 +19,41 @@
             width: 100%;
         }
 
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            margin-bottom: 0;
+        }
+
+
+        .menukort {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .menukort button {
+            padding: 1rem;
+            margin: 1.1rem;
+            background-color: transparent;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .menukort button:hover {
+            color: #D19289;
+            cursor: pointer;
+        }
+
+        .valgt {
+            color: #D19289;
+            text-decoration: dotted underline;
+        }
+
+        /*Menu artikel*/
         #oversigt {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -52,57 +87,14 @@
 
         }
 
-        h1 {
-            font-size: 2rem;
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 200;
-            margin-bottom: 0;
-        }
-
         .kategori_titel {
-            font-size: 1rem;
+            font-size: 1.5rem;
             text-align: center;
             font-family: 'Montserrat', sans-serif;
             color: #D19289;
             margin-top: 0;
 
 
-        }
-
-
-        header img {
-            margin-top: 1rem;
-            margin-left: 1rem;
-            width: 30vw;
-            height: 30vw;
-        }
-
-        header {
-            text-align: center;
-        }
-
-        .menukort {
-            text-align: center;
-        }
-
-        .menukort button {
-            padding: 1rem;
-            margin: 0.5rem;
-            background-color: transparent;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .menukort button:hover {
-            color: #D19289;
-            cursor: pointer;
-        }
-
-        .valgt {
-            text-decoration: underline;
         }
 
 
@@ -135,7 +127,8 @@
         video {
             position: relative;
             width: 100%;
-            height: 50%;
+            height: auto;
+
         }
 
         #videoBG {
@@ -143,20 +136,38 @@
             z-index: -1;
         }
 
-        .overlay_logo_1 {
+        header {
+            position: relative;
+        }
+
+
+        .overlay img {
             width: 40vw;
             height: 40vw;
             position: absolute;
-            top: 5%;
-            left: 30%;
+            top: 5vh;
+            left: 30vw;
         }
 
-        .overlay_logo_1 p {
+        .forsidevideo p {
             text-align: center;
-            font-size: 0.7rem;
+            font-size: 1.8rem;
             font-family: 'Montserrat', sans-serif;
 
         }
+
+        .forsidevideo a {
+            position: absolute;
+            top: 85%;
+            left: 42%;
+            text-decoration: none;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+
+        }
+
+        /*Footer*/
 
         footer {
             background-color: #D19289;
@@ -172,50 +183,7 @@
         }
 
 
-        @media (min-width:800px) {
-            #menuknap {
-                display: none;
-            }
-
-            #menu.hidden {
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-            #navigation {
-                height: auto;
-                width: 100%;
-                position: fixed;
-                z-index: 1;
-                top: 0;
-                right: 0;
-                font-family: 'Montserrat', sans-serif;
-                font-size: 1.3rem;
-                background-color: #E9A692;
-                text-align: right;
-                padding-right: 5rem;
-            }
-
-            #navigation ul {
-                list-style: none;
-            }
-
-            #navigation li {
-                display: inline-block;
-                padding-left: 5rem;
-            }
-
-            #navigation li a {
-                text-decoration: none;
-                color: white;
-                font-weight: 200;
-            }
-
-            li.titel {
-                margin-right: 50rem;
-                color: white;
-            }
-        }
+        @media (min-width:800px) {}
     </style>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
@@ -223,35 +191,37 @@
 </head>
 
 <body>
-    <section id="sektion_1">
+    <section id="section_1">
         <div class="forsidevideo">
             <video id="videoBG" autoplay muted loop>
                 <source src="http://nicolinechristiansen.dk/kea/Bistro_forsidevid.mp4" type="video/mp4">
             </video>
-        </div>
-        <div class="overlay_logo_1">
-            <img src="twobab.png" alt="Logo">
+            <div class="overlay"><img src="twobab.png" alt="logo">
+            </div>
+            <p><a href="#section_2">Gå til menukortet</a></p>
         </div>
     </section>
-    <h1>Menukort</h1>
-    <h2 class="kategori_titel">Foretter</h2>
-    <nav class="menukort">
-        <button data-kategori="alle" class="valgt">Alle retter</button>
-        <button data-kategori="forretter">Foretter</button>
-        <button data-kategori="hovedretter">Hovedretter</button>
-        <button data-kategori="desserter">Desserter</button>
-        <button data-kategori="sideorders">Sideorders</button>
-        <button data-kategori="drikkevarer">Drikkevarer</button>
-    </nav>
-    <section id="oversigt"></section>
-    <template>
-        <article class="menu">
-            <img src="" alt="" class="billede">
-            <h2 class="titel"></h2>
-            <p class="lidt_info"></p>
-            <p class="pris"></p>
-        </article>
-    </template>
+    <section id="section_2">
+        <h1>Menukort</h1>
+        <nav class="menukort">
+            <button data-kategori="alle" class="valgt">Alle retter</button>
+            <button data-kategori="forretter">Foretter</button>
+            <button data-kategori="hovedretter">Hovedretter</button>
+            <button data-kategori="desserter">Desserter</button>
+            <button data-kategori="sideorders">Sideorders</button>
+            <button data-kategori="drikkevarer">Drikkevarer</button>
+        </nav>
+        <h2 class="kategori_titel">Alle retter</h2>
+        <section id="oversigt"></section>
+        <template>
+            <article class="menu">
+                <img src="" alt="" class="billede">
+                <h2 class="titel"></h2>
+                <p class="lidt_info"></p>
+                <p class="pris"></p>
+            </article>
+        </template>
+    </section>
     <script>
         //Variabler
         const titel = document.querySelector(".kategori_titel");
