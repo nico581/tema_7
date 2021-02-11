@@ -22,8 +22,9 @@
         #oversigt {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-gap: 1em;
-            margin: 2em;
+            grid-gap: 2rem;
+            margin: auto;
+            max-width: 1000px;
         }
 
         .menu {
@@ -31,6 +32,7 @@
             background-color: #F8F4E8;
             padding: 1rem;
             border-radius: 10px;
+            margin: 1rem;
         }
 
         .menu img {
@@ -55,6 +57,17 @@
             text-align: center;
             font-family: 'Montserrat', sans-serif;
             font-weight: 200;
+            margin-bottom: 0;
+        }
+
+        .kategori_titel {
+            font-size: 1rem;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            color: #D19289;
+            margin-top: 0;
+
+
         }
 
 
@@ -109,25 +122,98 @@
 
         .lidt_info {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8;
+            font-size: 0.8rem;
         }
 
         .pris {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8;
+            font-size: 0.8rem;
             color: #E9A692;
         }
 
+        /*Forside video*/
+        video {
+            position: relative;
+            width: 100%;
+            height: 50%;
+        }
+
+        #videoBG {
+            width: 100%;
+            z-index: -1;
+        }
+
+        .overlay_logo_1 {
+            width: 40vw;
+            height: 40vw;
+            position: absolute;
+            top: 5%;
+            left: 30%;
+        }
+
+        .overlay_logo_1 p {
+            text-align: center;
+            font-size: 0.7rem;
+            font-family: 'Montserrat', sans-serif;
+
+        }
+
+        footer {
+            background-color: #D19289;
+            height: 4rem;
+        }
+
+        footer p {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            text-align: center;
+            font-size: 0.8rem;
+            padding-top: 1.5rem;
+        }
+
+
         @media (min-width:800px) {
-            header img {
-                margin-top: 1rem;
-                margin-left: 1rem;
-                width: 20vw;
-                height: 20vw;
+            #menuknap {
+                display: none;
             }
 
-            section {
-                margin: auto 0;
+            #menu.hidden {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            #navigation {
+                height: auto;
+                width: 100%;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                right: 0;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 1.3rem;
+                background-color: #E9A692;
+                text-align: right;
+                padding-right: 5rem;
+            }
+
+            #navigation ul {
+                list-style: none;
+            }
+
+            #navigation li {
+                display: inline-block;
+                padding-left: 5rem;
+            }
+
+            #navigation li a {
+                text-decoration: none;
+                color: white;
+                font-weight: 200;
+            }
+
+            li.titel {
+                margin-right: 50rem;
+                color: white;
             }
         }
     </style>
@@ -137,10 +223,18 @@
 </head>
 
 <body>
-    <header>
-        <img src="twobab.png" alt="Logo">
-    </header>
-
+    <section id="sektion_1">
+        <div class="forsidevideo">
+            <video id="videoBG" autoplay muted loop>
+                <source src="http://nicolinechristiansen.dk/kea/Bistro_forsidevid.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="overlay_logo_1">
+            <img src="twobab.png" alt="Logo">
+        </div>
+    </section>
+    <h1>Menukort</h1>
+    <h2 class="kategori_titel">Foretter</h2>
     <nav class="menukort">
         <button data-kategori="alle" class="valgt">Alle retter</button>
         <button data-kategori="forretter">Foretter</button>
@@ -149,7 +243,6 @@
         <button data-kategori="sideorders">Sideorders</button>
         <button data-kategori="drikkevarer">Drikkevarer</button>
     </nav>
-    <h1>Foretter</h1>
     <section id="oversigt"></section>
     <template>
         <article class="menu">
@@ -159,11 +252,9 @@
             <p class="pris"></p>
         </article>
     </template>
-
-
     <script>
         //Variabler
-        const titel = document.querySelector("h1");
+        const titel = document.querySelector(".kategori_titel");
         const medieurl = "https://babushka-dd8a.restdb.io/media/";
         const myHeaders = {
             "x-apikey": "600ec2fb1346a1524ff12de4"
@@ -238,4 +329,7 @@
             location.href = `detalje.html?id=${menu._id}`;
         }
     </script>
+    <footer>
+        <p>Bistro Babushka opgave - MMD 2.Semester - Nicoline Christiansen</p>
+    </footer>
 </body></html>
