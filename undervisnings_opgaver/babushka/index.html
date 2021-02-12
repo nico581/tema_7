@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bistro Babushka</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -12,7 +14,7 @@
 
         body {
             margin: auto 0;
-
+            height: 100vh;
         }
 
         img {
@@ -27,41 +29,113 @@
             scroll-snap-type: y mandatory;
         }
 
-        h1 {
-            font-size: 2rem;
+        /* Navigation*/
+        .bar1,
+        .bar2,
+        .bar3 {
+            width: 35px;
+            height: 2px;
+            background-color: #F8F4E8;
+            margin: 10px 0;
+            transition: 0.4s;
+        }
+
+        #navigation {
             text-align: center;
+            left: 0px;
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            background: #D19289;
+
+        }
+
+        #navigation a {
+            text-decoration: none;
+            color: #F8F4E8;
+            font-size: 1.5rem;
             font-family: 'Montserrat', sans-serif;
-            font-weight: 200;
-            margin-bottom: 0;
+
         }
 
-
-        .menukort {
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .menukort button {
-            padding: 1rem;
-            margin: 1.1rem;
-            background-color: transparent;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .menukort button:hover {
-            color: #D19289;
+        #navigation a:hover {
+            text-decoration: underline dotted;
             cursor: pointer;
         }
 
-        .valgt {
-            color: #D19289;
-            text-decoration: dotted underline;
+        #navigation #menu li {
+            list-style: none;
+            padding: 5rem;
         }
 
-        /*Menu artikel*/
+        #navigation #menu {
+            transition: transform 1.5s;
+        }
+
+        #navigation ul {
+            position: absolute;
+            z-index: 1;
+            padding-left: 0;
+            background-color: #D19289;
+            width: 100%;
+            height: 100%;
+            margin-top: 2.9rem;
+        }
+
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+        }
+
+        /* Roter  bar1 */
+        .change .bar1 {
+            transform: rotate(-45deg) translate(-9px, 6px);
+        }
+
+        /* Fadeout bar2 */
+        .change .bar2 {
+            opacity: 0;
+        }
+
+        /* Rotate bar3 */
+        .change .bar3 {
+            transform: rotate(45deg) translate(-9px, -9px);
+        }
+
+        /*Section 1*/
+        #section_1 {
+            position: relative;
+            width: 100%;
+        }
+
+        /*Video*/
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        #videoBG {
+            width: 100%;
+            z-index: -1;
+        }
+
+        .overlay_1 img {
+            width: 40vw;
+            height: 40vw;
+            position: absolute;
+            top: 4vh;
+            left: 30vw;
+        }
+
+        .overlay_2 p {
+            display: none;
+        }
+
+
+        /*Section 2*/
         #oversigt {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -97,15 +171,14 @@
         }
 
         .kategori_titel {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             text-align: center;
             font-family: 'Montserrat', sans-serif;
             color: #D19289;
             margin-top: 0;
-
+            text-transform: uppercase;
 
         }
-
 
         .detaljer {
             padding: 0.8rem;
@@ -123,56 +196,54 @@
 
         .lidt_info {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 1rem;
         }
 
         .pris {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 1rem;
             color: #E9A692;
         }
 
-        /*Forside video*/
-        video {
-            position: relative;
-            width: 100%;
-            height: auto;
-
-        }
-
-        #videoBG {
-            width: 100%;
-            z-index: -1;
-        }
-
-        #section_1 {
-            position: relative;
-        }
-
-        .overlay_1 img {
-            width: 40vw;
-            height: 40vw;
-            position: absolute;
-            top: 1vh;
-            left: 30vw;
-        }
-
-        .overlay_2 p {
+        h1 {
+            font-size: 2rem;
             text-align: center;
-            font-size: 1.8rem;
             font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            margin-bottom: 0;
+        }
+
+
+        .menukort {
+            text-align: center;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menukort button {
+            padding: 1rem;
+            margin: 0.5rem;
+            background-color: #D19289;
+            border: none;
+            border-radius: 20rem;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+
 
         }
 
-        .overlay_2 a {
-            position: absolute;
-            top: 85%;
-            left: 42%;
-            text-decoration: none;
+        .menukort button:hover {
+            color: black;
+            cursor: pointer;
+            transform: scale(1.05);
+            background-color: transparent;
+            border: 3px solid #D19289;
+
+        }
+
+        .valgt {
             color: white;
-            font-family: 'Montserrat', sans-serif;
-            text-align: center;
-
         }
 
         /*Footer*/
@@ -180,7 +251,6 @@
         footer {
             background-color: #D19289;
             height: 4rem;
-            position: static;
         }
 
         footer p {
@@ -191,13 +261,92 @@
             padding-top: 1.5rem;
         }
 
+        @media (min-width:800px) {
 
-        @media (min-width:800px) {}
+            /*Section 2*/
+            #section_2 {
+                margin-top: 2rem;
+            }
+
+            /*Menukort knapper*/
+
+            .menukort {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 2rem;
+
+            }
+
+
+            .overlay_1 img {
+                top: 10vh;
+                left: 32vw;
+            }
+
+            /*Navigation*/
+
+            #navigation {
+                position: static;
+                width: 100%;
+                height: 5vw;
+            }
+
+            #menuknap {
+                display: none;
+            }
+
+            #menu.hidden {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            #menu a:hover {
+                text-decoration: none;
+                cursor: pointer;
+                color: black;
+            }
+
+            #navigation #menu li {
+                padding: 2rem;
+            }
+
+            #navigation #menu {
+                transition: transform 1.5s;
+            }
+
+            #navigation ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                background-color: transparent;
+                margin-top: 0;
+                height: auto;
+            }
+
+            #menu li a {
+                text-transform: uppercase;
+            }
+
+        }
     </style>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
 
 </head>
+<header>
+    <nav id="navigation">
+        <div id="menuknap" onclick="burgerMenu(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <ul id="menu" class="hidden">
+            <li><a href="">Bistro Babushka</a></li>
+            <li><a href="#section_2">Menukort</a>
+            </li>
+            <li><a href="">Kontakt os</a></li>
+        </ul>
+    </nav>
+</header>
 
 <body>
     <div class="container">
@@ -214,7 +363,6 @@
             </div>
         </section>
         <section id="section_2">
-            <h1>Menukort</h1>
             <nav class="menukort">
                 <button data-kategori="alle" class="valgt">Alle retter</button>
                 <button data-kategori="forretter">Foretter</button>
@@ -234,6 +382,9 @@
                 </article>
             </template>
         </section>
+        <footer>
+            <p>Bistro Babushka opgave - MMD 2.Semester - Nicoline Christiansen</p>
+        </footer>
     </div>
     <script>
         //Variabler
@@ -254,6 +405,8 @@
 
             filterKnapper.forEach(knap => knap.addEventListener("click", filtrerMenu));
             loadJSON();
+
+            document.querySelector("#menuknap").addEventListener("click", toggleMenu);
         }
 
         //Funktion filtrer menukort
@@ -311,8 +464,15 @@
         function visDetaljer(menu) {
             location.href = `detalje.html?id=${menu._id}`;
         }
+        //Burger menu //
+        function toggleMenu() {
+            console.log("toggleMenu")
+
+            document.querySelector("#menu").classList.toggle("hidden");
+        }
+
+        function burgerMenu(x) {
+            x.classList.toggle("change");
+        }
     </script>
-    <footer>
-        <p>Bistro Babushka opgave - MMD 2.Semester - Nicoline Christiansen</p>
-    </footer>
 </body></html>

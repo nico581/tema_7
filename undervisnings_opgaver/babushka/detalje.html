@@ -31,22 +31,62 @@
         h1 {
             font-family: 'Montserrat', sans-serif;
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.5rem;
+            margin-top: 2rem;
             margin-bottom: 0;
             font-weight: 100;
 
         }
 
-        header img {
-            margin-top: 1rem;
-            margin-left: 1rem;
-            width: 30vw;
-            height: 30vw;
+        /*Navigation*/
+
+        #navigation {
+            position: static;
+            width: 100%;
+            height: 5vw;
         }
 
-        header {
-            text-align: center;
+        #menuknap {
+            display: none;
         }
+
+        #menu.hidden {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #menu a:hover {
+            text-decoration: none;
+            cursor: pointer;
+            color: black;
+        }
+
+        #navigation #menu li {
+            padding: 2rem;
+            list-style: none;
+        }
+
+        #navigation #menu {
+            transition: transform 1.5s;
+        }
+
+        #navigation ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background-color: #D19289;
+            margin-top: 0;
+            height: auto;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #menu li a {
+            text-transform: uppercase;
+            text-decoration: none;
+            color: white;
+            font-size: 2rem;
+        }
+
 
         .menukort {
             text-align: center;
@@ -86,6 +126,7 @@
             padding-top: 1.5rem;
         }
 
+
         @media (min-width:800px) {
             header img {
                 margin-top: 1rem;
@@ -94,15 +135,20 @@
                 height: 20vw;
             }
         }
+
     </style>
 </head>
 
 <body>
     <header>
-        <img src="twobab.png" alt="Logo">
+        <nav id="navigation">
+            <ul id="menu">
+                <li><a href="">Bistro Babushka</a></li>
+            </ul>
+        </nav>
     </header>
-    <h1 class="titel"></h1>
     <section>
+        <h1 class="titel"></h1>
         <article class="menu">
             <img src="" alt="" class="billede">
             <p class="lang_info"></p>
@@ -144,9 +190,12 @@
             history.back();
 
         }
+
     </script>
     <footer>
         <p>Bistro Babushka opgave - MMD 2.Semester - Nicoline Christiansen</p>
     </footer>
 
-</body></html>
+</body>
+
+</html>
